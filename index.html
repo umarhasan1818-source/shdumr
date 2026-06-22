@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antara Dua Tangan - eBook Reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f6f8;
+        }
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        .menu-item {
+            margin-bottom: 10px;
+        }
+        .menu-btn {
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-btn:hover {
+            background-color: #1abc9c;
+        }
+        /* Dropdown Content */
+        .dropdown-container {
+            display: none;
+            background-color: #1a252f;
+            padding-left: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+        .dropdown-container a {
+            display: block;
+            color: #bdc3c7;
+            padding: 8px 10px;
+            text-decoration: none;
+            font-size: 13px;
+            border-bottom: 1px solid #2c3e50;
+        }
+        .dropdown-container a:hover {
+            color: white;
+            background-color: #16a085;
+        }
+        /* Active class for dropdowns */
+        .active {
+            display: block;
+        }
+        /* Main Content Iframe */
+        .content-area {
+            flex-grow: 1;
+            height: 100%;
+            border: none;
+        }
+        a.direct-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #34495e;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        a.direct-link:hover {
+            background-color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Antara Dua Tangan</h2>
+    
+    <a href="home.html" target="contentFrame" class="direct-link">📖 Homepage / Cover</a>
+    <a href="kata_pengantar.html" target="contentFrame" class="direct-link">📝 Kata Pengantar</a>
+    <a href="pendahuluan.html" target="contentFrame" class="direct-link">🔍 Pendahuluan</a>
+
+    <div class="menu-item">
+        <button class="menu-btn" onclick="toggleDropdown('bab1')">📚 Bab I <span>▼</span></button>
+        <div id="bab1" class="dropdown-container">
+            <a href="bab1.html#sub1" target="contentFrame">Prinsip Kedermawanan</a>
+            <a href="bab1.html#subA" target="contentFrame">a. Keutamaan Memberi</a>
+            <a href="bab1.html#subB" target="contentFrame">b. Sedekah Lebih Baik</a>
+            <a href="bab1.html#subC" target="contentFrame">c. Sedekah Paling Utama</a>
+            <a href="bab1.html#subD" target="contentFrame">d. Harta & Keikhlasan</a>
+            <a href="bab1.html#subE" target="contentFrame">e. Sedekah & Kehormatan</a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <button class="menu-btn" onclick="toggleDropdown('bab2')">🚫 Bab II <span>▼</span></button>
+        <div id="bab2" class="dropdown-container">
+            <a href="bab2.html#sub1" target="contentFrame">Larangan Meminta-minta</a>
+            <a href="bab2.html#subA" target="contentFrame">a. Meminta dengan Memaksa</a>
+            <a href="bab2.html#subB" target="contentFrame">b. Memperbanyak Kekayaan</a>
+            <a href="bab2.html#subC" target="contentFrame">c. Kehilangan Kehormatan</a>
+            <a href="bab2.html#subD" target="contentFrame">d. Lebih Baik Bekerja</a>
+            <a href="bab2.html#subE" target="contentFrame">e. Tanpa Kebutuhan</a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <button class="menu-btn" onclick="toggleDropdown('bab3')">🌟 Bab III <span>▼</span></button>
+        <div id="bab3" class="dropdown-container">
+            <a href="bab3.html#sub1" target="contentFrame">Perspektif Islam</a>
+            <a href="bab3.html#subA" target="contentFrame">a. Implementasi Sehari-hari</a>
+            <a href="bab3.html#subB" target="contentFrame">b. Ciri Kepribadian Mulia</a>
+            <a href="bab3.html#subC" target="contentFrame">c. Keutamaan Dermawan</a>
+            <a href="bab3.html#subD" target="contentFrame">d. Dermawan dalam Islam</a>
+            <a href="bab3.html#subE" target="contentFrame">e. Pengaruh Dunia & Akhirat</a>
+        </div>
+    </div>
+
+    <a href="daftar_pustaka.html" target="contentFrame" class="direct-link">📚 Daftar Pustaka</a>
+    <a href="profil.html" target="contentFrame" class="direct-link">👤 Profil Penulis & Editor</a>
+</div>
+
+<iframe src="home.html" name="contentFrame" class="content-area"></iframe>
+
+<script>
+    function toggleDropdown(id) {
+        var dropdown = document.getElementById(id);
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        } else {
+            dropdown.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
